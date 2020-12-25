@@ -1,17 +1,13 @@
 <p id="notice"><%= notice %></p>
+ <div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-6">
+  
 
-<h1>Questions</h1>
-
+<h1>Top Questions</h1>
+<%= link_to 'Add Question', new_question_path, class:'btn btn-info ques' %>
 <table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th>Answered</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+
 
   <tbody>
     <% @questions.each do |question| %>
@@ -28,6 +24,10 @@
   </tbody>
 </table>
 
+</div>
+
 <br>
 
-<%= link_to 'New Question', new_question_path %>
+
+<div class="col-sm-3"></div>
+</div> 
