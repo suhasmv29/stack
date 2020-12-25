@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Questiontags</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Question</th>
+      <th>Tag</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @questiontags.each do |questiontag| %>
+      <tr>
+        <td><%= questiontag.question_id %></td>
+        <td><%= questiontag.tag_id %></td>
+        <td><%= link_to 'Show', questiontag %></td>
+        <td><%= link_to 'Edit', edit_questiontag_path(questiontag) %></td>
+        <td><%= link_to 'Destroy', questiontag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Questiontag', new_questiontag_path %>

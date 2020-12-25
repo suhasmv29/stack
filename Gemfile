@@ -24,6 +24,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'hirb'
 gem 'pry'
+gem 'semantic-ui-sass'
+
+gem 'bootstrap-sass'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
