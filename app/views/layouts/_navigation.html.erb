@@ -35,5 +35,10 @@
       <%= link_to  "Sign-up", new_user_registration_path,class:"btn btn-primary", type:"button" %>
 
     </div>
+    <div class="sign-out">
+      <%= link_to  "Sign-out", destroy_user_session_path, method: :delete, class:"btn btn-outline-danger", type:"button" %>
+
+    </div>
+
   </div>
 </nav>

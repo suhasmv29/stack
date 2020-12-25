@@ -12,10 +12,9 @@
   <tbody>
     <% @questions.each do |question| %>
       <tr>
-        <td><%= question.title %></td>
-        <td><%= question.body %></td>
-        <td><%= question.answered %></td>
-        <td><%= question.user_id %></td>
+
+        <td><h3><%= link_to  question.title, question, class: 'bg-light text-primary' %><h3></td>
+
         <td><%= link_to 'Show', question %></td>
         <td><%= link_to 'Edit', edit_question_path(question) %></td>
         <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -31,3 +30,5 @@
 
 <div class="col-sm-3"></div>
 </div> 
+
+

@@ -1,24 +1,27 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @question.title %>
-</p>
+<div class="col-sm-2"></div>
+<div class="col-sm-8">
 
-<p>
-  <strong>Body:</strong>
-  <%= @question.body %>
-</p>
+  <p>
 
-<p>
-  <strong>Answered:</strong>
-  <%= @question.answered %>
-</p>
+    <h1><%= @question.title %></h1>
+  </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @question.user_id %>
-</p>
+  <p>
+    <h4><%= @question.body %></h4>
+  </p>
 
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+  <p>
+    <strong>Answered:</strong>
+    <%= @question.answered %>
+  </p>
+
+  <p>
+    <strong>User:</strong>
+    <%= @question.user_id %>
+  </p>
+
+  <%= link_to 'Edit', edit_question_path(@question) %> 
+  <%= link_to 'Back', questions_path %>
+</div>
+<div class="col-sm-3"></div>
