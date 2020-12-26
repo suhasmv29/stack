@@ -10,7 +10,8 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
-
+    
+    @answers = Answer.select(:body).where("question_id = :question_id and user_id = :user_id", {question_id: @question.id, user_id: current_user.id})
   end
 
   # GET /questions/new
@@ -27,6 +28,8 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     @question.user_id = current_user.id
+    
+    
     respond_to do |format|
       if @question.save
         format.html { redirect_to @question, notice: 'Question was successfully created.' }

@@ -10,6 +10,7 @@ class AnswersController < ApplicationController
   # GET /answers/1
   # GET /answers/1.json
   def show
+    
   end
 
   # GET /answers/new
@@ -25,7 +26,11 @@ class AnswersController < ApplicationController
   # POST /answers.json
   def create
     @answer = Answer.new(answer_params)
+    @answer.user_id = current_user.id
+    @question = Question.all
+    @answer.question_id = @question.ids.last
 
+    
     respond_to do |format|
       if @answer.save
         format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
@@ -35,6 +40,7 @@ class AnswersController < ApplicationController
         format.json { render json: @answer.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /answers/1
