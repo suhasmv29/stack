@@ -11,7 +11,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1.json
   def show
     
-    @answers = Answer.select(:body).where("question_id = :question_id and user_id = :user_id", {question_id: @question.id, user_id: current_user.id})
+    @answers = Answer.select(:body).where("question_id = :question_id ", {question_id: @question.id})
   end
 
   # GET /questions/new

@@ -18,6 +18,14 @@
     left: 50px;
 }
 
+.nametag{
+  position: relative;
+  left: 320px;
+}
+.container{
+  float: right;
+}
+
 
 .sidenav {
     height: 100%; /* Full-height: remove this if you want "auto" height */
@@ -47,4 +55,13 @@
   @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
+  }
+
+  .vp {
+    border-left: 2px solid rgb(209, 224, 209);
+    height: 100%;
+    position: absolute;
+    left: 27%;
+    margin-left: -3px;
+    top: 0;
   }
