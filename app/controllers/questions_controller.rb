@@ -13,6 +13,7 @@ class QuestionsController < ApplicationController
   def show
     
     @answers = Answer.where("question_id = :question_id ", {question_id: @question.id})
+    
   end
 
   # GET /questions/new
@@ -29,17 +30,18 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     @question.user_id = current_user.id
+    @question.save
     
-    
-    respond_to do |format|
-      if @question.save
-        format.html { redirect_to @question, notice: 'Question was successfully created.' }
-        format.json { render :show, status: :created, location: @question }
-      else
-        format.html { render :new }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @question.save
+    #     format.html { redirect_to @question, notice: 'Question was successfully created.' }
+    #     format.json { render :show, status: :created, location: @question }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @question.errors, status: :unprocessable_entity }
+    #   end
+    # end
+    redirect_to root_path
   end
 
   # PATCH/PUT /questions/1

@@ -18,11 +18,13 @@
     
     <div class="field">
       <%= form.label :title %><br>
+      <small>Be specific and imagine you’re asking a question to another person
       <%= form.text_field :title, class:'form-control',placeholder: 'eg: Is there an R function for finding the index of an element in a vector' %>
     </div>
 
     <div class="field ">
       <%= form.label :body %><br>
+      <h6>Include all the information someone would need to answer your question</h6>
       <%= form.text_area :body, class:'form-control', rows:'8' %>
     </div>
 
