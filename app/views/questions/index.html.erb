@@ -7,19 +7,21 @@
     <h2>Top Questions</h2>
   </div>
   <hr>
-  <%= link_to 'Add Question', new_question_path, class:'btn btn-info ques' %>
-
+  <%if user_signed_in?%>
+    <%= link_to 'Add Question', new_question_path, class:'btn btn-info ques' %>
+  <%end%>
   <table class="tables">
     <tbody>
       <% @questions.each do |question| %>
         
         <tr class="tr1">
-          <td><%= link_to 'Show', question %></td>
-          <td><%= link_to 'Edit', edit_question_path(question) %></td>
-          <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        
+          <%if user_signed_in?%>
+            <td><%= link_to 'Show', question %></td>
+            <td><%= link_to 'Edit', edit_question_path(question) %></td>
+            <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <%end%>
 
-          <td><h3><%= link_to  question.title, question, class: 'bg-light text-primary' %> <h3></td>
+          <td><h3><%= link_to  question.title, question, class: 'bg-white text-primary' %> <h3></td>
           <%if User.find(question.user_id).present?%>
             <td><%=User.find(question.user_id).email%></td>
           <%end%>
