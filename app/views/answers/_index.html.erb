@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Answers</h1>
+<h3>Answers</h3>
 
-<table>
+<table class="tables-ans">
   <thead>
     <tr>
 
@@ -11,10 +11,21 @@
   </thead>
 
   <tbody>
+    
     <% @answers.each do |answer| %>
-      <tr>
-        <td><h1><%= answer.body %></h1></td>
-
+      <tr class="tr-ans">
+        <div>
+          
+          <td><h4><%= answer.body %></h4></td>
+          
+          <%if User.find(answer.user_id).present?%>
+            
+            <td><small>by <%= User.find(answer.user_id).email %></td>
+          <%end%>
+        </div>
+        
+      </tr>
+      <tr class="tr-ans1">
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +33,5 @@
 
 <br>
 
-<%= link_to 'New Answer', new_answer_path %>
+<%= link_to  "Answer", new_answer_path, class:"btn btn-primary text-white",type:"button" %>
+

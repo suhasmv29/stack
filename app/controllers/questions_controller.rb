@@ -5,13 +5,14 @@ class QuestionsController < ApplicationController
   # GET /questions.json
   def index
     @questions = Question.all
+
   end
 
   # GET /questions/1
   # GET /questions/1.json
   def show
     
-    @answers = Answer.select(:body).where("question_id = :question_id ", {question_id: @question.id})
+    @answers = Answer.where("question_id = :question_id ", {question_id: @question.id})
   end
 
   # GET /questions/new

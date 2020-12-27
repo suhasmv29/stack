@@ -20,11 +20,15 @@
     width: 100%;
     padding-left: 20px;
 }
-table, tr {
+// this is for the question in index file
+.tables, .tr1 {
+
     height: 100px;
     width: 900px;
     text-align: center;
     border: 1px solid rgb(207, 201, 201);
+    border-left: none;
+    border-right: none;
 }
 .log-form{
     margin: auto;
@@ -33,3 +37,18 @@ table, tr {
     width: 100%;
     padding-left: 20px;
 }
+
+// this is for the answer in index file
+.tr-ans{
+    height: auto;
+
+    text-align: left;
+    border: 1px solid rgb(207, 201, 201);
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
+}
+.tr-ans1{
+    height: 50px;
+} 

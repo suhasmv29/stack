@@ -27,20 +27,25 @@
       </form>
       
     </div>
+    <% if current_user.present?%>
+
+      <div class="sign-out">
+        <%= link_to  "Sign-out", destroy_user_session_path, method: :delete, class:"btn btn-outline-danger ", type:"button" %>
+      </div>
+    <%else%>
+      <div class="login">
+        <%= link_to  "Login", new_user_session_path,class:"btn btn-primary text-white",type:"button" %>
+      </div>
+      
+      <div class="sign-up">
+        <%= link_to  "Sign-up", new_user_registration_path,class:"btn btn-primary text-white", type:"button" %>
+      </div>
+    <%end%>
     
-    <div class="login">
-      <%= link_to  "Login", new_user_session_path,class:"btn btn-outline-primary",type:"button" %>
-    </div>
-
-    <div class="sign-up">
-      <%= link_to  "Sign-up", new_user_registration_path,class:"btn btn-primary", type:"button" %>
-
-    </div>
-    <div class="sign-out">
-      <%= link_to  "Sign-out", destroy_user_session_path, method: :delete, class:"btn btn-outline-danger", type:"button" %>
-
-    </div>
-
+   
+   
   </div>
 </nav>
+<div class="vp"></div>
+
 
