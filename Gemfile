@@ -28,6 +28,8 @@ gem 'semantic-ui-sass'
 
 gem 'bootstrap-sass'
 
+gem 'acts_as_votable', '~> 0.11.1'
+
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-github'

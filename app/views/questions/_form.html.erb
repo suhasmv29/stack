@@ -1,42 +1,40 @@
-
 <div class="col-sm-4"></div>
 
 <div class="col-sm-6">
-  
-  <%= form_with(model: question, local: true) do |form| %>
-    <% if question.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+    <%= form_with(model: question, local: true) do |form| %>
+        <% if question.errors.any? %>
+            <div id="error_explanation">
+                <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
 
-        <ul>
-          <% question.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
+                <ul>
+                    <% question.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+
+        <div class="field">
+            <%= form.label :title %><br>
+            <small>Be specific and imagine you’re asking a question to another person
+            <%= form.text_field :title, class:'form-control',placeholder: 'eg: Is there an R function for finding the index of an element in a vector' %>
+        </div>
+
+        <div class="field ">
+            <%= form.label :body %><br>
+            <h6>Include all the information someone would need to answer your question</h6>
+            <%= form.text_area :body, class:'form-control', rows:'8' %>
+        </div>
+
+        <div class="field">
+            <%= form.label :answered %>
+            <%= form.check_box :answered %>
+        </div>
+
+        <div class="actions">
+            <%= form.submit "Review Question", class:'btn btn-primary mt-5' %>
+        </div>
     <% end %>
-    
-    <div class="field">
-      <%= form.label :title %><br>
-      <small>Be specific and imagine you’re asking a question to another person
-      <%= form.text_field :title, class:'form-control',placeholder: 'eg: Is there an R function for finding the index of an element in a vector' %>
-    </div>
 
-    <div class="field ">
-      <%= form.label :body %><br>
-      <h6>Include all the information someone would need to answer your question</h6>
-      <%= form.text_area :body, class:'form-control', rows:'8' %>
-    </div>
-
-    <div class="field">
-      <%= form.label :answered %>
-      <%= form.check_box :answered %>
-    </div>
-
-    <div class="actions">
-      <%= form.submit "Review Question", class:'btn btn-primary mt-5' %>
-    </div>
-  <% end %>
-
-  <form>
+    <form>
 </div>

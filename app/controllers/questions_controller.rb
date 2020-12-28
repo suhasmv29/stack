@@ -10,6 +10,7 @@ class QuestionsController < ApplicationController
   def index
     @questions = Question.all
 
+    
   end
 
   # GET /questions/1
@@ -17,7 +18,18 @@ class QuestionsController < ApplicationController
   def show
     @answers = Answer.where('question_id = :question_id ', { question_id: @question.id })
     session[:question_id] = params[:id]
+  end
 
+  def stats
+    @answer = Answer.all
+
+    @question = Question.all
+
+    @ans = Answer.where('user_id = :user_id', {user_id: current_user.id}).count
+
+    @question = Question.where('user_id = :user_id', {user_id: current_user.id}).count
+
+    
   end
 
   # GET /questions/new
@@ -35,15 +47,6 @@ class QuestionsController < ApplicationController
     @question.user_id = current_user.id
     @question.save
 
-    # respond_to do |format|
-    #   if @question.save
-    #     format.html { redirect_to @question, notice: 'Question was successfully created.' }
-    #     format.json { render :show, status: :created, location: @question }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @question.errors, status: :unprocessable_entity }
-    #   end
-    # end
     redirect_to root_path
   end
 
@@ -70,6 +73,8 @@ class QuestionsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
 
   private
 

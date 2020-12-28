@@ -3,34 +3,33 @@
 <div class="col-xs-3"></div>
 
 <div class="col-xs-6">
-  <div class="top">
-    <h2>Top Questions</h2>
-  </div>
-  <hr>
-  <%if user_signed_in?%>
-    <%= link_to 'Ask Question', new_question_path, class:'btn btn-info ques' %>
-  <%end%>
-  <table class="tables">
-    <tbody>
-      <% @questions.each do |question| %>
-        
-        <tr class="tr1">
-          <td>
-            <h3><%= link_to  question.title, question, class: 'bg-white text-primary' %> <h3>
-          </td>
-          <%if User.find(question.user_id).present?%>
-            <td><%=User.find(question.user_id).email%></td>
-          <%end%>
-        </tr>
-        
-      <% end %>
-    </tbody>
-  </table>
-  
+    <div class="top">
+        <h2>Top Questions</h2>
+    </div>
+    <hr>
+    <%if user_signed_in?%>
+      <%= link_to 'Ask Question', new_question_path, class:'btn btn-info ques' %>
+    <%end%>
+    <table class="tables">
+        <tbody>
+            <% @questions.each do |question| %>
+
+            <tr class="tr1">
+                <td>
+                    <h3><%= link_to  question.title, question, class: 'bg-white text-primary' %> <h3>
+                </td>
+                <%if question.user.present?%>
+                  <td><%=question.user.email%></td>
+                  <td><%=question.user.created_at.strftime("%e-%b-%Y")%></td>
+                <%end%>
+            </tr>
+
+            <% end %>
+        </tbody>
+    </table>
 </div>
 
 <br>
 
 <div class="vp"></div>
 <div class="col-xs-2"></div>
-

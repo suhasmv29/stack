@@ -1,5 +1,4 @@
 class StackController < ApplicationController
-
   def facebook
     @user = User.create_from_provider_data(request.env['omniauth.auth'])
     if @user.persisted?
@@ -31,8 +30,7 @@ class StackController < ApplicationController
   end
 
   def failure
-    flash[:error] = "There is a problem"
+    flash[:error] = 'There is a problem'
     redirect_to new_user_registration_url
   end
-
 end

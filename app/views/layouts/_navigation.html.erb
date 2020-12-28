@@ -1,57 +1,49 @@
 <div class="vl"></div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  
-  <div class="nametag">
-  
-    
 
+    <div class="nametag">
 
-
-    <%= link_to  "stackoverflow", root_path,class:'fa fa-stack-overflow',style:"font-size:16px;color:red;background-color: 	#F5F5F5;" %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </div>
-  <div class="container">
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link btn btn-outline-secondary ml-5" href="#">About</a>
-        </li>
-        <li class="nav-item ml-3">
-          <a class="nav-link btn btn-outline-secondary" href="#">Products</a>
-        </li>
-        <li class="nav-item ml-3">
-          <a class="nav-link btn btn-outline-secondary" href="#">For Teams</a>
-        </li>
-
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-      
+        <%= link_to  "stackoverflow", root_path,class:'fa fa-stack-overflow',style:"font-size:16px;color:red;background-color: 	#F5F5F5;" %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
     </div>
-    <% if current_user.present?%>
+    <div class="container">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link btn btn-outline-secondary ml-5" href="#">About</a>
+                </li>
+                <li class="nav-item ml-3">
+                    <a class="nav-link btn btn-outline-secondary" href="#">Products</a>
+                </li>
+                <li class="nav-item ml-3">
+                    <a class="nav-link btn btn-outline-secondary" href="#">For Teams</a>
+                </li>
 
-      <div class="sign-out">
-        <%= link_to  "Sign-out", destroy_user_session_path, method: :delete, class:"btn btn-outline-danger ", type:"button" %>
-      </div>
-    <%else%>
-      <div class="login">
-        <%= link_to  "Login", new_user_session_path,class:"btn btn-primary text-white",type:"button" %>
-      </div>
-      
-      <div class="sign-up">
-        <%= link_to  "Sign-up", new_user_registration_path,class:"btn btn-primary text-white", type:"button" %>
-      </div>
-    <%end%>
-    
-   
-   
-  </div>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+        <% if current_user.present?%>
+          <div class="sign-out">
+           
+            <%= link_to  "", edit_user_registration_path,class:"glyphicon glyphicon-user", type:"button", style:'background-color:white;color:blue;' %>
+            <%= link_to  "Sign-out", destroy_user_session_path, method: :delete, class:"btn btn-outline-danger ", type:"button" %>
+          </div>
+        <%else%>
+          <div class="login">
+              <%= link_to  "Login", new_user_session_path,class:"btn btn-primary text-white",type:"button" %>
+          </div>
+
+          <div class="sign-up">
+              <%= link_to  "Sign-up", new_user_registration_path,class:"btn btn-primary text-white", type:"button" %>
+          </div>
+        <%end%>
+
+    </div>
 </nav>
 <div class="vp"></div>
-
-
