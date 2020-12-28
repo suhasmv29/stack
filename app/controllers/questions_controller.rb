@@ -1,5 +1,9 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :set_question, only: %i[show edit update destroy]
+
+  before_action :require_user, except: %i[show index]
+
+  before_action :authorize_user, only: %i[edit update destroy]
 
   # GET /questions
   # GET /questions.json
@@ -11,9 +15,9 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
-    
-    @answers = Answer.where("question_id = :question_id ", {question_id: @question.id})
-    
+    @answers = Answer.where('question_id = :question_id ', { question_id: @question.id })
+    session[:question_id] = params[:id]
+
   end
 
   # GET /questions/new
@@ -22,8 +26,7 @@ class QuestionsController < ApplicationController
   end
 
   # GET /questions/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /questions
   # POST /questions.json
@@ -31,7 +34,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     @question.user_id = current_user.id
     @question.save
-    
+
     # respond_to do |format|
     #   if @question.save
     #     format.html { redirect_to @question, notice: 'Question was successfully created.' }
@@ -69,13 +72,19 @@ class QuestionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_question
-      @question = Question.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def question_params
-      params.require(:question).permit(:title, :body, :answered, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_question
+    @question = Question.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def question_params
+    params.require(:question).permit(:title, :body, :answered, :user_id)
+  end
+
+  def authorize_user
+    id = Question.find(params[:id]).user_id
+    redirect_to root_path if id != current_user.id
+  end
 end

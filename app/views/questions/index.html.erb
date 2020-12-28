@@ -15,13 +15,9 @@
       <% @questions.each do |question| %>
         
         <tr class="tr1">
-          <%if user_signed_in?%>
-            <td><%= link_to 'Show', question, style:"background-color: white" %></td>
-            <td><%= link_to 'Edit', edit_question_path(question), style:"background-color: white"  %></td>
-            <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' }, style:"background-color: white"  %></td>
-          <%end%>
-
-          <td><h3><%= link_to  question.title, question, class: 'bg-white text-primary' %> <h3></td>
+          <td>
+            <h3><%= link_to  question.title, question, class: 'bg-white text-primary' %> <h3>
+          </td>
           <%if User.find(question.user_id).present?%>
             <td><%=User.find(question.user_id).email%></td>
           <%end%>
