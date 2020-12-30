@@ -17,8 +17,9 @@
                       <h4><%= answer.body %></h4>
                   </td>
 
-                  <%if User.find(answer.user_id).present?%>
-                    <td><small>by <%= User.find(answer.user_id).email %></td>
+                  <%if answer.user.present?%>
+                    <td><small>by <%= answer.user.email %></td>
+                    <td><small> at <%= answer.user.created_at.strftime("%e-%b-%Y") %></td>
                   <%end%>
               </div>
           </tr>

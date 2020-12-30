@@ -14,15 +14,17 @@
         <tbody>
             <% @questions.each do |question| %>
 
-            <tr class="tr1">
-                <td>
-                    <h3><%= link_to  question.title, question, class: 'bg-white text-primary' %> <h3>
-                </td>
-                <%if question.user.present?%>
-                  <td><%=question.user.email%></td>
-                  <td><%=question.user.created_at.strftime("%e-%b-%Y")%></td>
-                <%end%>
-            </tr>
+                <tr class="tr1">
+                    <td>
+                        <h3><%= link_to  question.title, question, class: 'bg-white text-primary' %> <h3>
+                    </td>
+                    <%if question.user.present?%>
+                    <td><%=question.user.email%></td>
+                    <td><%=question.user.created_at.strftime("%e-%b-%Y")%></td>
+                    <%end%>
+                </tr>
+
+                
 
             <% end %>
         </tbody>

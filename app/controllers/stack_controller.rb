@@ -1,6 +1,7 @@
 class StackController < ApplicationController
   def facebook
     @user = User.create_from_provider_data(request.env['omniauth.auth'])
+    binding.pry
     if @user.persisted?
       sign_in_and_redirect @user
     else
@@ -11,6 +12,7 @@ class StackController < ApplicationController
 
   def github
     @user = User.create_from_provider_data(request.env['omniauth.auth'])
+    binding.pry
     if @user.persisted?
       sign_in_and_redirect @user
     else

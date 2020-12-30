@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :questions
   resources :answers
   devise_for :users, controllers: { omniauth_callbacks: 'stack' }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -10,7 +9,12 @@ Rails.application.routes.draw do
 
   get 'stats', to: 'questions#stats'
 
-  
+  resources :questions do
+    member do
+      put 'like' => "questions#upvote"
+      put 'unlike' => "questions#downvote"
+    end
+  end
 
 end
 

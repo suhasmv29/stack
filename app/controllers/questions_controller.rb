@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: %i[show edit update destroy]
+  before_action :set_question, only: %i[show edit update destroy upvote downvote]
 
   before_action :require_user, except: %i[show index]
 
@@ -9,8 +9,6 @@ class QuestionsController < ApplicationController
   # GET /questions.json
   def index
     @questions = Question.all
-
-    
   end
 
   # GET /questions/1
@@ -18,6 +16,8 @@ class QuestionsController < ApplicationController
   def show
     @answers = Answer.where('question_id = :question_id ', { question_id: @question.id })
     session[:question_id] = params[:id]
+    @questions = Question.all
+    
   end
 
   def stats
@@ -75,6 +75,30 @@ class QuestionsController < ApplicationController
   end
 
 
+  def upvote
+    # @question.upvote_from current_user
+    # redirect_to questions_path
+
+    @question = Question.find(params[:id])
+    @question.liked_by current_user
+
+    redirect_to '/'
+
+  end
+
+  def downvote
+    # @question.downvote_from current_user
+    
+    # redirect_to questions_path
+
+    @question = Question.find(params[:id])
+
+    #@question.disliked_by current_user
+    @question.disliked_by current_user
+
+    redirect_to '/'
+  end
+
 
   private
 
@@ -92,4 +116,5 @@ class QuestionsController < ApplicationController
     id = Question.find(params[:id]).user_id
     redirect_to root_path if id != current_user.id
   end
+
 end
