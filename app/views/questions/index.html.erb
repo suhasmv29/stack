@@ -13,18 +13,23 @@
     <table class="tables">
         <tbody>
             <% @questions.each do |question| %>
-
                 <tr class="tr1">
-                    <td>
+                    <td class="td1">
+                        <button class="btn bg-transparent">
+                            <h4><%= link_to Answer.where('question_id = :question_id', { question_id: question.id }).count, question%><br>
+                            <%= link_to "Answer", question%>
+                            </h4>
+                            
+                        </button>
+                    </td>
+                    <td class="td1">
                         <h3><%= link_to  question.title, question, class: 'bg-white text-primary' %> <h3>
                     </td>
                     <%if question.user.present?%>
-                    <td><%=question.user.email%></td>
-                    <td><%=question.user.created_at.strftime("%e-%b-%Y")%></td>
+                    <td class="td1"><%=question.user.email%></td>
+                    <td class="td1"><%=question.user.created_at.strftime("%e-%b-%Y")%></td>
                     <%end%>
                 </tr>
-
-                
 
             <% end %>
         </tbody>

@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  before_action :set_answer, only: %i[show edit update destroy]
+  before_action :set_answer, only: %i[show edit update destroy  upvote downvote]
   before_action :require_user, except: %i[index]
   before_action :authorize_user, only: %i[edit update destroy show]
 
@@ -28,7 +28,6 @@ class AnswersController < ApplicationController
     @answer.user_id = current_user.id
     @question = Question.all
     @answer.question_id = session[:question_id]
-    binding.pry
     @answer.save
     redirect_to root_path
     # respond_to do |format|
@@ -65,6 +64,7 @@ class AnswersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 
   private
 

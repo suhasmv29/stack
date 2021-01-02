@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<h3><%=Answer.where(:question_id => @question.id).count%> Answers</h3>
+<h3><%=@count%> Answers</h3>
 
 <table class="tables-ans">
     <thead>
@@ -13,7 +13,7 @@
         <% @answers.each do |answer| %>
           <tr class="tr-ans">
               <div>
-                  <td class="ans-body">
+                  <td class="ans-body">  
                       <h4><%= answer.body %></h4>
                   </td>
 
