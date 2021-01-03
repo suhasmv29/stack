@@ -15,8 +15,6 @@ Rails.application.routes.draw do
       put 'unlike' => "questions#downvote"
     end
   end
-
-
 end
 
 
