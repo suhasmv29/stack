@@ -11,7 +11,9 @@ class AnswersController < ApplicationController
 
   # GET /answers/1
   # GET /answers/1.json
-  def show; end
+  def show
+    redirect_to root_path 
+  end
 
   # GET /answers/new
   def new
@@ -30,20 +32,12 @@ class AnswersController < ApplicationController
     @answer.question_id = session[:question_id]
     @answer.save
     redirect_to root_path
-    # respond_to do |format|
-    #   if @answer.save
-    #     format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
-    #     format.json { render :show, status: :created, location: @answer }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @answer.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
   # PATCH/PUT /answers/1
   # PATCH/PUT /answers/1.json
   def update
+    
     respond_to do |format|
       if @answer.update(answer_params)
         format.html { redirect_to @answer, notice: 'Answer was successfully updated.' }

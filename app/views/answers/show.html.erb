@@ -1,19 +1,13 @@
 <p id="notice"><%= notice %></p>
-
+<div class="col-xs-3"></div>
+<div class="col-xs-9">
 <p>
   <strong>Body:</strong>
   <%= @answer.body %>
 </p>
+<div class="col-xs-3"></div>
 
-<p>
-  <strong>Question:</strong>
-  <%= @answer.question_id %>
-</p>
 
-<p>
-  <strong>User:</strong>
-  <%= @answer.user_id %>
-</p>
 
 <%= link_to 'Edit', edit_answer_path(@answer) %> |
 <%= link_to 'Back', answers_path %>

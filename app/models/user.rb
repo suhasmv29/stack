@@ -11,7 +11,7 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
     end
   end
-  has_many :questions
-  has_many :answers
+  has_many :questions, dependent: :destroy
+  has_many :answers, dependent: :destroy
   acts_as_voter
 end

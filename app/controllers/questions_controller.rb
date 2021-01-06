@@ -19,11 +19,12 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
-    @answers = Answer.where('question_id = :question_id ', { question_id: params[:id] })
-    @count = Answer.where('question_id = :question_id ', { question_id: params[:id] }).count
-    $count_global = @count
-    session[:question_id] = params[:id]
+    # @answers = Answer.all
+    # @answers = Answer.where('question_id = :question_id ', { question_id: params[:id] })
+    # @count = Answer.where('question_id = :question_id ', { question_id: params[:id] }).count
+    # session[:question_id] = params[:id]
     @questions = Question.all
+
 
     
   end
@@ -64,16 +65,18 @@ class QuestionsController < ApplicationController
   # DELETE /questions/1
   # DELETE /questions/1.json
   def destroy
+    @answers.destroy
+
     @question.destroy
-    respond_to do |format|
-      format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    # respond_to do |format|
+    #   format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
   end
 
 
   def upvote
-    # @question.upvote_from current_user
+    # @question.upvote_from current_userredirect_to root_path
     # redirect_to questions_path
 
     @question = Question.find(params[:id])
