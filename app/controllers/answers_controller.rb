@@ -12,7 +12,7 @@ class AnswersController < ApplicationController
   # GET /answers/1
   # GET /answers/1.json
   def show
-    redirect_to root_path 
+    redirect_to root_path
   end
 
   # GET /answers/new
@@ -28,7 +28,8 @@ class AnswersController < ApplicationController
   def create
     @answer = Answer.new(answer_params)
     @answer.user_id = current_user.id
-    @question = Question.all
+    @answer.question_id = params[:id]
+    # @question = Question.all
     @answer.question_id = session[:question_id]
     @answer.save
     redirect_to root_path
@@ -54,7 +55,7 @@ class AnswersController < ApplicationController
   def destroy
     @answer.destroy
     respond_to do |format|
-      format.html { redirect_to answers_url, notice: 'Answer was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Answer was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

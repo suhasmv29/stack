@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
-<h2><b>
-
-Answers</b></h2>
+<h3>
+<%=@question.answers.count%>
+Answers</h3>
 
 <table class="tables-ans">
     <thead>
@@ -16,20 +16,22 @@ Answers</b></h2>
           <tr class="tr-ans">
               <div>
                   <td class="ans-body">  
-                        <h4><%= answer.body %></h4>
+                        <h4><%= answer.body %></h4><br>
                   </td>
-
                   <%if answer.user.present?%>
-                    <td><%= link_to 'Edit', edit_answer_path(answer), class:'btn btn-outline-light' %></td>
-                    <td><%= link_to 'Delete', answer, method: :delete, data: {confirm: "Are you sure"} ,class: 'btn btn-outline-light'%><br></td>
                     <td><small>by <%= answer.user.email %>&emsp;</td>
-                    <td><small> at <%= answer.user.created_at.strftime("%e-%b-%Y") %></td>
+                    <td><small> at <%= answer.user.created_at.strftime("%e-%b-%Y") %></td><br>
 
 
                   <%end%>
               </div>
+            <td><%= link_to 'Edit', edit_answer_path(answer), class:'btn btn-outline-light' %></td>
+            <td><%= link_to 'Delete', answer, method: :delete, data: {confirm: "Are you sure"} ,class: 'btn btn-outline-light'%><br></td>
           </tr>
-          <tr class="tr-ans1"></tr>
+          
+          <tr class="tr-ans1">
+                      
+          </tr>
         <% end %>
     </tbody>
 </table>

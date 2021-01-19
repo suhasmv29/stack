@@ -12,7 +12,6 @@ class QuestionsController < ApplicationController
   def index
     @questions = Question.all
     # @count = Answer.where('question_id = :question_id ', { question_id: @questions.user_id }).count
-    @count = $count_global
 
   end
 
@@ -22,11 +21,7 @@ class QuestionsController < ApplicationController
     # @answers = Answer.all
     # @answers = Answer.where('question_id = :question_id ', { question_id: params[:id] })
     # @count = Answer.where('question_id = :question_id ', { question_id: params[:id] }).count
-    # session[:question_id] = params[:id]
-    @questions = Question.all
-
-
-    
+    session[:question_id] = params[:id]
   end
 
 
